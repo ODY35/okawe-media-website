@@ -6,6 +6,7 @@ const translations = {
       home: 'Home',
       services: 'Services',
       portfolio: 'Portfolio',
+      gallery: 'Gallery',
       contact: 'Contact',
     },
     hero: {
@@ -29,6 +30,7 @@ const translations = {
       home: 'Accueil',
       services: 'Services',
       portfolio: 'Portfolio',
+      gallery: 'Galerie',
       contact: 'Contact',
     },
     hero: {
