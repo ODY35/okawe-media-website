@@ -28,8 +28,8 @@ const Layout = ({ children }) => {
               <ul className="nav-links">
                 <li><a href="#home" onClick={closeMenu}>{t('nav.home')}</a></li>
                 <li><a href="#services" onClick={closeMenu}>{t('nav.services')}</a></li>
-                <li><a href="#gallery" onClick={closeMenu}>{t('nav.gallery')}</a></li>
                 <li><a href="#portfolio" onClick={closeMenu}>{t('nav.portfolio')}</a></li>
+                <li><a href="#gallery" onClick={closeMenu}>{t('nav.gallery')}</a></li>
                 <li><a href="#contact" onClick={closeMenu}>{t('nav.contact')}</a></li>
               </ul>
             </nav>

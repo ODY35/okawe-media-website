@@ -11,8 +11,8 @@ function Home() {
     <div className="home-page">
       <Hero />
       <Services />
-      <Gallery />
       <Portfolio />
+      <Gallery />
       <Contact />
       <WhatsAppButton />
     </div>
