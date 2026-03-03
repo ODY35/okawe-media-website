@@ -13,6 +13,7 @@ const Gallery = () => {
     { id: 6, title: 'Client Location', url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60' },
   ];
 
+  const loopPhotos = [...onsitePhotos, ...onsitePhotos];
   return (
     <div id="gallery" className="section">
       <div className="section-title-holder" style={{ background: 'var(--main-gradient)' }}>
@@ -22,15 +23,17 @@ const Gallery = () => {
         <h2 className="entry-title">{t('nav.gallery').toUpperCase()}</h2>
       </div>
       <div className="section-content-holder">
-        <div className="gallery-grid">
-          {onsitePhotos.map((item) => (
-            <div key={item.id} className="gallery-item">
-              <img src={item.url} alt={item.title} />
-              <div className="gallery-text-holder" style={{ background: 'rgba(0, 191, 255, 0.8)' }}>
-                <p className="gallery-text">{item.title}</p>
+        <div className="gallery-slider">
+          <div className="gallery-track">
+            {loopPhotos.map((item, idx) => (
+              <div key={`${item.id}-${idx}`} className="gallery-item">
+                <img src={item.url} alt={item.title} />
+                <div className="gallery-text-holder" style={{ background: 'rgba(0, 191, 255, 0.8)' }}>
+                  <p className="gallery-text">{item.title}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       <div className="clear"></div>

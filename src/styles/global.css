@@ -324,10 +324,27 @@ a {
   gap: 20px;
 }
 
+.gallery-slider {
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 20px;
+  animation: gallery-scroll 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes gallery-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .gallery-item {
   position: relative;
   overflow: hidden;
   aspect-ratio: 1/1;
+  flex: 0 0 250px;
 }
 
 .gallery-item img {
