@@ -1,10 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import logo from '../assets/images/logo.png';
-// To use a local video:
-// 1. Place your video in src/assets/videos/hero-bg.mp4
-// 2. Uncomment the line below:
-// import heroVideo from '../assets/videos/hero-bg.mp4';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -19,8 +15,7 @@ const Hero = () => {
           playsInline 
           className="hero-video"
         >
-          {/* Example of using a local video: */}
-          {/* <source src={heroVideo} type="video/mp4" /> */}
+          <source src={process.env.PUBLIC_URL + '/hero.mp4'} type="video/mp4" />
           <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-dark-ink-swirls-2651-large.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>

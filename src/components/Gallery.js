@@ -15,7 +15,7 @@ const Gallery = () => {
 
   const loopPhotos = [...onsitePhotos, ...onsitePhotos];
   return (
-    <div id="gallery" className="section">
+    <div id="gallery" className="section compact">
       <div className="section-title-holder" style={{ background: 'var(--main-gradient)' }}>
         <div className="section-num">
           <span style={{ color: 'rgba(255, 255, 255, 0.2)' }}>02</span>

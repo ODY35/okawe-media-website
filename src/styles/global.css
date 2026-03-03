@@ -110,6 +110,10 @@ a {
   min-height: 100vh;
 }
 
+.section.compact {
+  min-height: auto;
+}
+
 .section-title-holder {
   width: 370px;
   background-color: var(--section-title-bg);
@@ -150,6 +154,10 @@ a {
   background-color: var(--content-bg);
   padding: 100px 60px;
   min-width: 320px;
+}
+
+.section.compact .section-content-holder {
+  padding: 40px 40px;
 }
 
 /* Hero Style - Boxus Inspired */
