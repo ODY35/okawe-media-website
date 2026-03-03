@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/okawe-media-website/static/css/main.5ae2f0cf.css",
-    "main.js": "/okawe-media-website/static/js/main.ce6d886d.js",
+    "main.css": "/okawe-media-website/static/css/main.1afb6742.css",
+    "main.js": "/okawe-media-website/static/js/main.0e241520.js",
     "static/js/453.509607fe.chunk.js": "/okawe-media-website/static/js/453.509607fe.chunk.js",
     "static/media/logo.png": "/okawe-media-website/static/media/logo.ee15518f6dee2e19b099.png",
     "index.html": "/okawe-media-website/index.html",
-    "main.5ae2f0cf.css.map": "/okawe-media-website/static/css/main.5ae2f0cf.css.map",
-    "main.ce6d886d.js.map": "/okawe-media-website/static/js/main.ce6d886d.js.map",
+    "main.1afb6742.css.map": "/okawe-media-website/static/css/main.1afb6742.css.map",
+    "main.0e241520.js.map": "/okawe-media-website/static/js/main.0e241520.js.map",
     "453.509607fe.chunk.js.map": "/okawe-media-website/static/js/453.509607fe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5ae2f0cf.css",
-    "static/js/main.ce6d886d.js"
+    "static/css/main.1afb6742.css",
+    "static/js/main.0e241520.js"
   ]
 }
