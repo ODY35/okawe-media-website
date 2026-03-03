@@ -5,6 +5,9 @@ const Portfolio = () => {
   const { t } = useLanguage();
   const [filter, setFilter] = useState('all');
 
+  // To add items to your portfolio:
+  // 1. For images: Add an item with type: 'image' and a URL (local import or web link)
+  // 2. For videos: Use the YouTube EMBED link (e.g., https://www.youtube.com/embed/XXXXX)
   const portfolioItems = [
     { id: 1, category: 'logo', title: 'Modern Tech Logo', type: 'image', url: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=500&q=60' },
     { id: 2, category: 'video', title: 'Brand Story Video', type: 'video', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },

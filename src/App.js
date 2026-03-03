@@ -8,7 +8,7 @@ import './styles/global.css';
 function App() {
   return (
     <LanguageProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
