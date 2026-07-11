@@ -203,6 +203,17 @@ function openAdminPanel() {
             </select>
             <button id="load-file" style="margin-left: 10px; padding: 5px 15px;">Load</button>
         </div>
+        <div style="margin-bottom: 30px; padding: 20px; border: 1px dashed #ddd; border-radius: 4px;">
+            <h3 style="margin-top: 0; margin-bottom: 10px;">Upload Images/Videos</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+                Drag & drop files here, or click to browse. You'll get a base64 string (for small files) or instructions to upload to GitHub.
+            </p>
+            <div id="drop-zone" style="padding: 30px; text-align: center; border: 2px dashed #aaa; border-radius: 4px; cursor: pointer;">
+                <p style="margin: 0;">Drop files here or click to browse</p>
+                <input type="file" id="file-input" style="display: none;" multiple accept="image/*,video/*">
+            </div>
+            <div id="upload-preview" style="margin-top: 15px;"></div>
+        </div>
         <div id="json-editor-container">
             <textarea id="json-editor" style="width: 100%; height: 400px; font-family: monospace; font-size: 14px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
             <div style="margin-top: 10px;">
@@ -213,6 +224,112 @@ function openAdminPanel() {
         </div>
     `;
     content.innerHTML = html;
+
+    // Set up drag-and-drop
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const uploadPreview = document.getElementById('upload-preview');
+
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, e => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+            dropZone.style.borderColor = '#32db89';
+            dropZone.style.backgroundColor = '#f0fff5';
+        });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, () => {
+            dropZone.style.borderColor = '#aaa';
+            dropZone.style.backgroundColor = 'transparent';
+        });
+    });
+
+    dropZone.addEventListener('drop', e => {
+        const files = e.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    fileInput.addEventListener('change', e => {
+        handleFiles(e.target.files);
+    });
+
+    function handleFiles(files) {
+        uploadPreview.innerHTML = '';
+        Array.from(files).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = e => {
+                const fileUrl = e.target.result;
+                const previewDiv = document.createElement('div');
+                previewDiv.style.marginBottom = '15px';
+                previewDiv.style.padding = '10px';
+                previewDiv.style.border = '1px solid #eee';
+                previewDiv.style.borderRadius = '4px';
+
+                const previewContent = document.createElement('div');
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = fileUrl;
+                    img.style.maxWidth = '200px';
+                    img.style.marginBottom = '10px';
+                    previewContent.appendChild(img);
+                } else if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.src = fileUrl;
+                    video.controls = true;
+                    video.style.maxWidth = '400px';
+                    video.style.marginBottom = '10px';
+                    previewContent.appendChild(video);
+                }
+
+                const fileName = document.createElement('p');
+                fileName.style.margin = '0 0 10px 0';
+                fileName.style.fontWeight = 'bold';
+                fileName.textContent = file.name;
+
+                const copyBtn = document.createElement('button');
+                copyBtn.textContent = 'Copy Base64';
+                copyBtn.style.padding = '6px 12px';
+                copyBtn.style.backgroundColor = '#007bff';
+                copyBtn.style.color = 'white';
+                copyBtn.style.border = 'none';
+                copyBtn.style.borderRadius = '4px';
+                copyBtn.style.cursor = 'pointer';
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(fileUrl);
+                        copyBtn.textContent = 'Copied!';
+                        setTimeout(() => copyBtn.textContent = 'Copy Base64', 2000);
+                    } catch (err) {
+                        alert('Failed to copy base64!');
+                    }
+                });
+
+                const instructions = document.createElement('p');
+                instructions.style.margin = '10px 0 0 0';
+                instructions.style.color = '#666';
+                instructions.style.fontSize = '13px';
+                instructions.innerHTML = `
+                    OR: Upload to GitHub's <strong>demo-images/</strong> (images) or <strong>videos/</strong> (videos) folder, then use URL like <code>videos/${file.name}</code> or <code>demo-images/${file.name}</code>
+                `;
+
+                previewDiv.appendChild(fileName);
+                previewDiv.appendChild(previewContent);
+                previewDiv.appendChild(copyBtn);
+                previewDiv.appendChild(instructions);
+                uploadPreview.appendChild(previewDiv);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
 
     // File selector and load handler
     document.getElementById('load-file').addEventListener('click', function() {
