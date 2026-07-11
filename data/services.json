@@ -1,0 +1,48 @@
+{
+  "slides": [
+    [
+      {
+        "icon": "demo-images/icon_01.png",
+        "title": "VIDEO MARKETING",
+        "description": "With the use of video marketing, your company increases its reach, grows its revenue, and expands its customer base. This method focuses on creating informational and valuable videos for your targeted audience. A few types of videos for video marketing are such as Instructional, announcement, behind the scenes, events and more."
+      },
+      {
+        "icon": "demo-images/icon_02.png",
+        "title": "SOCIAL MEDIA MARKETING",
+        "description": "We create graphic design contents adapted to every platforms such as facebook, instagram, X(twitter), tiktok etc. Our team of professionals have many years of experience in the field and are devoted and commited to give you the best brand identity that will perfectly reflect your company image. Let's build it together."
+      },
+      {
+        "icon": "demo-images/icon_03.png",
+        "title": "WEB",
+        "description": "With the creation of many business, it's a must for a serious enterprise to have a professional website. A website for a business is to establish an online presence, attract potential customers, and provide information about products or services. A website can also serve as a platform for e-commerce, customer support, and marketing. At OKAWE MEDIA, we are proud to say that we create amazing websites that will capture your clients attention."
+      },
+      {
+        "icon": "demo-images/icon_04.png",
+        "title": "SEO ON AND OFF PAGE",
+        "description": "Off Page SEO; Off page means that we can promote your website through internet. We have included 3 images submission, 2 Videos submission, 3 to 6 Social media targets, Book marking, Blog directory submission and Article submission On Page SEO; On page means what we will do within your website. Such as Meta Title, Meta Descriotion, Content Optimization, Google Web Master, Google Analytics and Google Adword."
+      }
+    ],
+    [
+      {
+        "icon": "demo-images/icon_03.png",
+        "title": "GRAPHIC DESIGN",
+        "description": "From logos to social media posts, flyers to brochures, we create stunning visuals that capture your brand's essence and leave a lasting impression on your audience."
+      },
+      {
+        "icon": "demo-images/icon_04.png",
+        "title": "BRAND IDENTITY",
+        "description": "We help you build a strong, recognizable brand identity that tells your story, connects with your audience, and sets you apart from the competition."
+      },
+      {
+        "icon": "demo-images/icon_02.png",
+        "title": "MOTION GRAPHICS",
+        "description": "Bring your ideas to life with dynamic motion graphics for ads, social media, presentations, and more — perfect for grabbing attention in today's fast-paced digital world."
+      },
+      {
+        "icon": "demo-images/icon_01.png",
+        "title": "CONTENT CREATION",
+        "description": "Need engaging content for your brand? We create high-quality photos, videos, and written content tailored to your audience and platform."
+      }
+    ]
+  ]
+}
