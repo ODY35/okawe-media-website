@@ -308,8 +308,7 @@ body a:hover
 {
     width: 160px !important;    
     padding-top: 150px;
-    display: block;
-    margin: 0 auto;
+    display: inline-block;
 }
 
 h1.big-title
