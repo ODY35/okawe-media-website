@@ -304,60 +304,10 @@ body a:hover
     z-index: 1;
 }
 
-.top-logo-container
-{
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin: 0 auto;
-    padding-top: 150px;
-    overflow: hidden;
-}
-
 .top-logo
 {
-    width: 160px !important;
-    height: auto;
-    position: absolute;
-    top: 150px;
-    left: 0;
-    transition: transform 0.8s ease-in-out;
-}
-
-.top-logo-white
-{
-    transform: translateX(0);
-}
-
-.top-logo-gradient
-{
-    transform: translateX(100%);
-}
-
-.top-logo-container .top-logo-white
-{
-    animation: swipeWhite 4s infinite;
-}
-
-.top-logo-container .top-logo-gradient
-{
-    animation: swipeGradient 4s infinite;
-}
-
-@keyframes swipeWhite {
-    0% { transform: translateX(0); }
-    45% { transform: translateX(0); }
-    50% { transform: translateX(-100%); }
-    95% { transform: translateX(-100%); }
-    100% { transform: translateX(-100%); }
-}
-
-@keyframes swipeGradient {
-    0% { transform: translateX(100%); }
-    45% { transform: translateX(100%); }
-    50% { transform: translateX(0); }
-    95% { transform: translateX(0); }
-    100% { transform: translateX(100%); }
+    width: 160px !important;    
+    padding-top: 150px;
 }
 
 h1.big-title
