@@ -68,10 +68,28 @@ body a:hover
 {    
     transition: background-color .2s linear;
     z-index: 99 !important;
-    background-color: #221C5A;
+    background: linear-gradient(135deg, #000000 0%, #4B0082 50%, #87CEFA 100%);
     width: 100% !important;
     top: 0;
     position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.mini-logo-link
+{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+}
+
+.mini-logo
+{
+    height: 40px;
+    width: auto;
 }
 
 #header-main-menu
