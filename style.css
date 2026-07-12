@@ -308,6 +308,8 @@ body a:hover
 {
     width: 160px !important;    
     padding-top: 150px;
+    display: block;
+    margin: 0 auto;
 }
 
 h1.big-title
@@ -316,7 +318,7 @@ h1.big-title
     font-size: 56px;
     font-weight: 700;
     line-height: 100%;
-    padding-top: 100px;
+    padding-top: 20px;
     color: #fff;
     letter-spacing: -1px;    
     width: 95%;
