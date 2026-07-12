@@ -1,23 +1,72 @@
 // Admin password - change this to your secret code!
 const ADMIN_PASSWORD = "mado260805A";
 
+let currentLanguage = localStorage.getItem('okawe-language') || 'en'; // Default to English
 let currentData = {};
+let currentLangData = {};
 let currentFile = "";
 
-document.addEventListener('DOMContentLoaded', async function() {
-    // Load all data files
-    const dataFiles = ['home', 'about', 'services', 'testimonials', 'contact', 'portfolio', 'video'];
+// Helper to get nested value from object using dot notation
+function getNestedValue(obj, path) {
+    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+}
+
+async function loadLanguageData(lang) {
+    const dataFiles = ['home', 'about', 'services', 'testimonials', 'contact', 'portfolio', 'video', 'language'];
+    currentData = {};
+    currentLangData = {};
+    
     for (const file of dataFiles) {
         try {
-            const response = await fetch(`data/${file}.json`);
-            currentData[file] = await response.json();
+            const response = await fetch(`data/${lang}/${file}.json`);
+            if (file === 'language') {
+                currentLangData = await response.json();
+            } else {
+                currentData[file] = await response.json();
+            }
         } catch (e) {
-            console.error(`Error loading ${file}.json:`, e);
+            console.error(`Error loading ${lang}/${file}.json:`, e);
+            // Fallback to English if we can't load the requested language
+            try {
+                const fallbackResponse = await fetch(`data/en/${file}.json`);
+                if (file === 'language') {
+                    currentLangData = await fallbackResponse.json();
+                } else {
+                    currentData[file] = await fallbackResponse.json();
+                }
+            } catch (fe) {
+                console.error(`Error loading en/${file}.json as fallback:`, fe);
+            }
         }
     }
-
-    // Render initial content
+    
+    // Update active button styles
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.dataset.lang === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
     renderContent();
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    // Load initial language data
+    await loadLanguageData(currentLanguage);
+
+    // Language switch button handlers
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', async function() {
+            const newLang = this.dataset.lang;
+            if (newLang !== currentLanguage) {
+                currentLanguage = newLang;
+                localStorage.setItem('okawe-language', currentLanguage);
+                await loadLanguageData(currentLanguage);
+            }
+        });
+    });
 
     // Admin entry click handler
     const adminEntry = document.getElementById('admin-entry');
@@ -66,6 +115,31 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 function renderContent() {
+    // First, render all language-specific UI elements (data-i18n attributes)
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        const value = getNestedValue(currentLangData, key);
+        if (value) {
+            el.textContent = value;
+        }
+    });
+    
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        const value = getNestedValue(currentLangData, key);
+        if (value) {
+            el.placeholder = value;
+        }
+    });
+    
+    document.querySelectorAll('[data-i18n-value]').forEach(el => {
+        const key = el.dataset.i18nValue;
+        const value = getNestedValue(currentLangData, key);
+        if (value) {
+            el.value = value;
+        }
+    });
+    
     // Home content
     if (currentData.home) {
         const homeTitle = document.querySelector('.big-title');
@@ -169,6 +243,8 @@ function renderContent() {
     // Contact
     if (currentData.contact) {
         const contactOneHalf = document.querySelector('#contact .one_half');
+        const branchesContainer = document.getElementById('branches-container');
+        
         if (contactOneHalf) {
             contactOneHalf.innerHTML = `
                 <p><strong><span style="color: #e64b77;">OKAWE Media.Ghana</span></strong> ${currentData.contact.description}</p>
@@ -176,7 +252,16 @@ function renderContent() {
                 <p>Email: <a href="mailto:${currentData.contact.email}" style="color: #32db89;">${currentData.contact.email}</a></p>
                 <p>Phone/WhatsApp: <a href="tel:${currentData.contact.phone.replace(/\s/g, '')}" style="color: #32db89;">${currentData.contact.phone}</a></p>
                 <p>WhatsApp: <a href="https://wa.me/${currentData.contact.whatsapp.replace(/\s/g, '')}" target="_blank" style="color: #32db89;">${currentData.contact.whatsapp}</a></p>
+                <br>
+                <div id="branches-container"></div>
             `;
+        }
+        
+        // Render branches
+        if (branchesContainer && currentData.contact.branches) {
+            branchesContainer.innerHTML = currentData.contact.branches.map(branch => `
+                <p><strong style="color: #55B286;">${branch.name}</strong>: <a href="${branch.facebook}" target="_blank" style="color: #32db89;"><span class="fa fa-facebook"></span> Facebook</a></p>
+            `).join('');
         }
     }
 }

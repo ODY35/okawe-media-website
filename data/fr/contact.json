@@ -1,0 +1,13 @@
+{
+  "title": "Contactez-nous",
+  "description": "OKAWE Media.Ghana est basé à Accra, au Ghana. Nous sommes ici pour aider votre entreprise à grandir! Nous avons également des succursales au Gabon, au Sénégal et en Côte d'Ivoire.",
+  "email": "okawenco@gmail.com",
+  "phone": "+233 50 577 5482",
+  "whatsapp": "+233 26 669 6183",
+  "branches": [
+    { "name": "Ghana (Siège)", "facebook": "https://www.facebook.com/OKAWEMEDIA.ghana/" },
+    { "name": "Gabon", "facebook": "https://www.facebook.com/okawencogabon/" },
+    { "name": "Sénégal", "facebook": "https://www.facebook.com/Okawencosenegal/" },
+    { "name": "Côte d'Ivoire", "facebook": "https://www.facebook.com/61580301149806/" }
+  ]
+}

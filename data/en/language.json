@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "news": "News",
+    "video": "Video",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "footer": {
+    "copyright": "© 2026 OKAWE Media.Ghana | All rights reserved.",
+    "admin": "•"
+  },
+  "contact": {
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "subjectPlaceholder": "Subject",
+    "messagePlaceholder": "Message",
+    "sendButton": "SEND"
+  },
+  "video": {
+    "title": "WHY CHOOSE US",
+    "strengthsTitle": "Our Strengths"
+  },
+  "portfolio": {
+    "loadMore": "LOAD MORE"
+  },
+  "skills": {
+    "title": "EXPERTISE",
+    "contentTitle": "Our Capabilities",
+    "description": "With years of experience in the digital marketing industry, we've honed our skills to deliver exceptional results for our clients. Here's what we excel at:",
+    "videoProduction": "Video Production",
+    "graphicDesign": "Graphic Design",
+    "socialMedia": "Social Media",
+    "webDesign": "Web Design"
+  },
+  "services": {
+    "title": "Services"
+  },
+  "about": {
+    "title": "ABOUT US",
+    "contentTitle": "About"
+  },
+  "news": {
+    "title": "RECENT PROJECTS"
+  }
+}

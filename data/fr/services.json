@@ -1,0 +1,48 @@
+{
+  "slides": [
+    [
+      {
+        "icon": "demo-images/icon_01.png",
+        "title": "MARKETING VIDÉO",
+        "description": "Grâce au marketing vidéo, votre entreprise augmente sa portée, développe ses revenus et élargit sa clientèle. Cette méthode se concentre sur la création de vidéos informatives et de valeur pour votre public cible. Parmi les types de vidéos de marketing vidéo, on peut citer les vidéos pédagogiques, les annonces, les coulisses, les événements et bien plus encore."
+      },
+      {
+        "icon": "demo-images/icon_02.png",
+        "title": "MARKETING DES RÉSEAUX SOCIAUX",
+        "description": "Nous créons des contenus de conception graphique adaptés à toutes les plateformes telles que Facebook, Instagram, X (Twitter), TikTok, etc. Notre équipe de professionnels compte plusieurs années d'expérience dans le domaine et est dévouée et engagée à vous donner la meilleure identité de marque qui reflétera parfaitement l'image de votre entreprise. Construisons-la ensemble."
+      },
+      {
+        "icon": "demo-images/icon_03.png",
+        "title": "WEB",
+        "description": "Avec la création de nombreuses entreprises, il est indispensable pour une entreprise sérieuse d'avoir un site web professionnel. Un site web pour une entreprise est d'établir une présence en ligne, d'attirer des clients potentiels et de fournir des informations sur les produits ou services. Un site web peut aussi servir de plateforme pour l'e-commerce, le support client et le marketing. Chez OKAWE MEDIA, nous sommes fiers de dire que nous créons des sites web incroyables qui capteront l'attention de vos clients."
+      },
+      {
+        "icon": "demo-images/icon_04.png",
+        "title": "SEO ON PAGE ET OFF PAGE",
+        "description": "Off Page SEO: off page signifie que nous pouvons promouvoir votre site web via Internet. Nous avons inclus 3 soumissions d'images, 2 soumissions de vidéos, 3 à 6 cibles de réseaux sociaux, le bookmarking, la soumission dans des annuaires de blogs et la soumission d'articles. On Page SEO: on page signifie ce que nous ferons sur votre site web. Comme le Titre Meta, la Description Meta, l'Optimisation du Contenu, Google Web Master, Google Analytics et Google Adword."
+      }
+    ],
+    [
+      {
+        "icon": "demo-images/icon_03.png",
+        "title": "CONCEPTION GRAPHIQUE",
+        "description": "Des logos aux publications sur les réseaux sociaux, des flyers aux brochures, nous créons des visuels époustouflants qui capturent l'essence de votre marque et laissent une impression durable à votre audience."
+      },
+      {
+        "icon": "demo-images/icon_04.png",
+        "title": "IDENTITÉ DE MARQUE",
+        "description": "Nous vous aidons à construire une identité de marque forte et reconnaissable qui raconte votre histoire, se connecte à votre audience et vous distingue de la concurrence."
+      },
+      {
+        "icon": "demo-images/icon_02.png",
+        "title": "MOTION GRAPHICS",
+        "description": "Donnez vie à vos idées avec des motion graphics dynamiques pour les annonces, les réseaux sociaux, les présentations et plus encore — parfait pour attirer l'attention dans le monde numérique d'aujourd'hui rapide."
+      },
+      {
+        "icon": "demo-images/icon_01.png",
+        "title": "CRÉATION DE CONTENU",
+        "description": "Besoin de contenu engageant pour votre marque? Nous créons des photos de haute qualité, des vidéos et du contenu écrit adaptés à votre audience et votre plateforme."
+      }
+    ]
+  ]
+}

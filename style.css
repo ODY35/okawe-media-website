@@ -75,9 +75,7 @@ body a:hover
     display: flex;
     align-items: center;
     padding: 10px 0;
-}
-
-.mini-logo-link
+}.mini-logo-link
 {
     position: absolute;
     left: 20px;
@@ -86,9 +84,53 @@ body a:hover
     display: block;
 }
 
-.mini-logo-link .mini-logo
+.mini-logo
 {
-    height: 25px !important;
+    height: 15px;
+    width: auto;
+}
+
+.language-switcher
+{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lang-btn
+{
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lang-btn:hover
+{
+    opacity: 0.8;
+}
+
+.lang-btn.active
+{
+    color: #32db89;
+}
+
+.lang-divider
+{
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.5;
+}25px !important;
     width: auto !important;
 }
 
