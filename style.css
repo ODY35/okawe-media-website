@@ -86,10 +86,10 @@ body a:hover
     display: block;
 }
 
-.mini-logo
+.mini-logo-link .mini-logo
 {
-    height: 25px;
-    width: auto;
+    height: 25px !important;
+    width: auto !important;
 }
 
 #header-main-menu
