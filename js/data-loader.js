@@ -190,6 +190,29 @@ function renderContent() {
                 if (contentEl) contentEl.textContent = service.description;
             }
         });
+    } else {
+        const fallbackServices = currentLanguage === 'fr' ? [
+            { title: 'MARKETING VIDÉO', description: 'Grâce au marketing vidéo, votre entreprise augmente sa portée, développe ses revenus et élargit sa clientèle.' },
+            { title: 'MARKETING DES RÉSEAUX SOCIAUX', description: 'Nous créons des contenus adaptés à chaque plateforme pour renforcer votre présence en ligne.' },
+            { title: 'WEB', description: 'Nous concevons des sites web professionnels pour présenter votre entreprise et attirer de nouveaux clients.' },
+            { title: 'SEO ON PAGE ET OFF PAGE', description: 'Nous optimisons votre visibilité sur Google grâce à une stratégie SEO complète et efficace.' }
+        ] : [
+            { title: 'VIDEO MARKETING', description: 'We help your business grow with clear, engaging video campaigns that reach the right audience.' },
+            { title: 'SOCIAL MEDIA MARKETING', description: 'We create tailored social content that strengthens your brand and keeps your audience engaged.' },
+            { title: 'WEB', description: 'We build professional websites that present your business and attract new customers.' },
+            { title: 'SEO ON AND OFF PAGE', description: 'We improve your online visibility with a complete SEO strategy that drives better results.' }
+        ];
+
+        const serviceHolders = document.querySelectorAll('.service-holder');
+        serviceHolders.forEach((holder, index) => {
+            const service = fallbackServices[index];
+            if (service) {
+                const titleEl = holder.querySelector('.service-title');
+                const contentEl = holder.querySelector('.service-content');
+                if (titleEl) titleEl.textContent = service.title;
+                if (contentEl) contentEl.textContent = service.description;
+            }
+        });
     }
 
     // Portfolio
@@ -283,7 +306,7 @@ function renderContent() {
         const footerBranches = document.getElementById('footer-branches');
         if (footerBranches && currentData.contact.branches) {
             footerBranches.innerHTML = currentData.contact.branches.map(branch => `
-                <p><a href="${branch.facebook}" target="_blank">${branch.name}</a></p>
+                <span class="footer-branch-item"><a href="${branch.facebook}" target="_blank">${branch.name}</a></span>
             `).join('');
         }
     }

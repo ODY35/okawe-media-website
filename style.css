@@ -74,11 +74,13 @@ body a:hover
     position: fixed;
     display: flex;
     align-items: center;
-    padding: 10px 0;
-}.mini-logo-link
+    padding: 10px 140px 10px 190px;
+}
+
+.mini-logo-link
 {
     position: absolute;
-    left: 20px;
+    left: 40px;
     top: 50%;
     transform: translateY(-50%);
     display: block;
@@ -138,7 +140,8 @@ body a:hover
 {    
     max-width: 1170px;
     margin: 0 auto;
-    padding-left: 150px;
+    padding-left: 220px;
+    padding-right: 120px;
     text-align: center;
     position: relative;
 }
@@ -1176,6 +1179,15 @@ footer
 {
     margin-top: 20px;
     color: #5b5881;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+.footer-branch-item
+{
+    display: inline-block;
 }
 
 .footer-branches a
@@ -1197,6 +1209,26 @@ footer
 {
     margin: 0 10px;
     font-size: 20px;
+}
+
+.admin-entry
+{
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: rgba(50, 219, 137, 0.18);
+    color: #32db89;
+    font-size: 15px;
+    line-height: 1;
+    vertical-align: middle;
+    box-shadow: 0 0 0 2px rgba(50, 219, 137, 0.12);
+}
+
+.admin-entry:hover
+{
+    background: rgba(50, 219, 137, 0.28);
+    color: #6ff0ab;
 }
 
 /* END FOOTER */
