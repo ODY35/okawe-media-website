@@ -175,6 +175,23 @@ function renderContent() {
         }
     }
 
+    // Services content
+    if (currentData.services && currentData.services.slides) {
+        const services = currentData.services.slides.flat();
+        const serviceHolders = document.querySelectorAll('.service-holder');
+        serviceHolders.forEach((holder, index) => {
+            const service = services[index];
+            if (service) {
+                const img = holder.querySelector('img');
+                const titleEl = holder.querySelector('.service-title');
+                const contentEl = holder.querySelector('.service-content');
+                if (img && service.icon) img.src = service.icon;
+                if (titleEl) titleEl.textContent = service.title;
+                if (contentEl) contentEl.textContent = service.description;
+            }
+        });
+    }
+
     // Portfolio
     if (currentData.portfolio) {
         const portfolioContainer = document.getElementById('portfolio-container');
@@ -204,7 +221,7 @@ function renderContent() {
         const videoSection = document.querySelector('#video');
         if (videoSection) {
             const sectionTitle = videoSection.querySelector('.entry-title');
-            const oneHalf = videoSection.querySelector('.one_half');
+            const oneHalf = videoSection.querySelector('[data-video-description]');
             const oneHalfLast = videoSection.querySelector('.one_half.last');
             const videoPopup = videoSection.querySelector('.video-popup-holder');
 
@@ -263,6 +280,12 @@ function renderContent() {
                 <p><strong style="color: #55B286;">${branch.name}</strong>: <a href="${branch.facebook}" target="_blank" style="color: #32db89;"><span class="fa fa-facebook"></span> Facebook</a></p>
             `).join('');
         }
+        const footerBranches = document.getElementById('footer-branches');
+        if (footerBranches && currentData.contact.branches) {
+            footerBranches.innerHTML = currentData.contact.branches.map(branch => `
+                <p><a href="${branch.facebook}" target="_blank">${branch.name}</a></p>
+            `).join('');
+        }
     }
 }
 
@@ -303,9 +326,11 @@ function openAdminPanel() {
             <textarea id="json-editor" style="width: 100%; height: 400px; font-family: monospace; font-size: 14px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"></textarea>
             <div style="margin-top: 10px;">
                 <button id="copy-json" style="padding: 8px 20px; background: #32db89; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Copy JSON</button>
-                <span id="copy-status" style="color: #32db89; display: none;">Copied!</span>
+                <button id="save-json" style="padding: 8px 20px; background: #0056d2; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Save JSON</button>
+                <span id="copy-status" style="color: #32db89; display: none; margin-right: 10px;">Copied!</span>
+                <span id="save-status" style="color: #32db89; display: none;">Saved!</span>
             </div>
-            <p style="margin-top: 10px; color: #666; font-size: 14px;">After editing, copy the JSON and paste it into the corresponding file on GitHub, then commit the changes.</p>
+            <p style="margin-top: 10px; color: #666; font-size: 14px;">After editing, save the JSON file locally or copy it to paste into GitHub.</p>
         </div>
     `;
     content.innerHTML = html;
@@ -445,6 +470,35 @@ function openAdminPanel() {
             }
         } catch (e) {
             alert("Failed to copy!");
+        }
+    });
+
+    document.getElementById('save-json').addEventListener('click', function() {
+        const text = document.getElementById('json-editor').value;
+        try {
+            const json = JSON.parse(text);
+            currentData[currentFile] = json;
+            renderContent();
+
+            const blob = new Blob([JSON.stringify(json, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentFile || 'data'}.json`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+
+            const status = document.getElementById('save-status');
+            if (status) {
+                status.style.display = 'inline';
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 2000);
+            }
+        } catch (e) {
+            alert("Invalid JSON, please check your changes!");
         }
     });
 

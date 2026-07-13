@@ -138,7 +138,9 @@ body a:hover
 {    
     max-width: 1170px;
     margin: 0 auto;
+    padding-left: 150px;
     text-align: center;
+    position: relative;
 }
 
 .main-menu.sm-clean
@@ -1168,6 +1170,22 @@ footer
 .footer-right
 {
     margin-left: 370px;
+}
+
+.footer-branches
+{
+    margin-top: 20px;
+    color: #5b5881;
+}
+
+.footer-branches a
+{
+    color: #5b5881;
+}
+
+.footer-branches a:hover
+{
+    color: #32db89;
 }
 
 .footer a
