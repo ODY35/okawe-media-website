@@ -94,10 +94,6 @@ body a:hover
 
 .language-switcher
 {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -107,6 +103,9 @@ body a:hover
     border-radius: 999px;
     border: 2px solid #32db89;
     box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+    margin-left: auto;
+    flex-shrink: 0;
+    position: relative;
 }
 
 .lang-btn
