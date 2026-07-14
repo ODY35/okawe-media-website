@@ -100,13 +100,13 @@ body a:hover
     transform: translateY(-50%);
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     z-index: 30;
-    background: rgba(255,255,255,0.95);
-    padding: 6px 10px;
+    background: rgba(255,255,255,0.98);
+    padding: 8px 12px;
     border-radius: 999px;
     border: 2px solid #32db89;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.24);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.28);
 }
 
 .lang-btn
@@ -114,10 +114,10 @@ body a:hover
     background: transparent;
     border: none;
     color: #1f2937;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 800;
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 5px 9px;
     text-transform: uppercase;
     transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
     font-family: 'Montserrat', sans-serif;
@@ -142,6 +142,11 @@ body a:hover
 {
     color: #1f2937;
     background: transparent;
+}
+
+.lang-btn:hover
+{
+    opacity: 0.9;
 }
 
 .lang-divider
