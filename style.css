@@ -100,12 +100,14 @@ body a:hover
     transform: translateY(-50%);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     z-index: 20;
-    background: rgba(255,255,255,0.12);
-    padding: 6px 10px;
+    background: rgba(255,255,255,0.18);
+    padding: 7px 12px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.35);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    backdrop-filter: blur(4px);
 }
 
 .lang-btn
@@ -116,12 +118,13 @@ body a:hover
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    padding: 2px 6px;
+    padding: 4px 8px;
     text-transform: uppercase;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
     font-family: 'Montserrat', sans-serif;
     display: inline-block;
     line-height: 1;
+    border-radius: 999px;
 }
 
 .lang-btn:hover
@@ -131,7 +134,15 @@ body a:hover
 
 .lang-btn.active
 {
-    color: #32db89;
+    color: #ffffff;
+    background: linear-gradient(135deg, #32db89 0%, #1f9f67 100%);
+    box-shadow: 0 4px 10px rgba(50,219,137,0.25);
+}
+
+.lang-btn:not(.active)
+{
+    color: #f5f7fa;
+    background: rgba(255,255,255,0.08);
 }
 
 .lang-divider
