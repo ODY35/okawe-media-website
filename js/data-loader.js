@@ -240,10 +240,12 @@ function renderContent() {
     
     // Home content
     if (currentData.home) {
-        const homeTitle = document.querySelector('.big-title');
-        const homeSubtitle = document.querySelector('.title-desc');
+        const homeBrand = document.querySelector('.big-title');
+        const homeTagline = document.querySelector('.title-desc');
+        const homeSubtitle = document.querySelector('.subtitle-desc');
         const heroVideo = document.querySelector('.hero-video source');
-        if (homeTitle) homeTitle.textContent = currentData.home.title;
+        if (homeBrand) homeBrand.textContent = currentData.home.brandName || currentData.home.title;
+        if (homeTagline) homeTagline.textContent = currentData.home.tagline || currentData.home.title;
         if (homeSubtitle) homeSubtitle.textContent = currentData.home.subtitle;
         if (heroVideo) heroVideo.src = currentData.home.video;
     }
