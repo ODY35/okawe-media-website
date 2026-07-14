@@ -52,11 +52,10 @@
                     <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </nav>
-            <!-- Language Switcher -->
-            <div class="language-switcher" style="display: flex !important; align-items: center; gap: 10px; z-index: 999; background: rgba(255,255,255,0.16); padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.28);">
-                <button class="lang-btn active" data-lang="en" style="display: inline-block !important; color: #fff; font-weight: 700; padding: 2px 6px;">EN</button>
-                <span class="lang-divider" style="color: #fff;">|</span>
-                <button class="lang-btn" data-lang="fr" style="display: inline-block !important; color: #fff; font-weight: 700; padding: 2px 6px;">FR</button>
+            <div class="language-switcher" aria-label="Language switcher">
+                <button class="lang-btn active" data-lang="en" type="button">EN</button>
+                <span class="lang-divider">|</span>
+                <button class="lang-btn" data-lang="fr" type="button">FR</button>
             </div>
         </div>
 
@@ -669,8 +668,8 @@
         <footer>
             <div class="footer content-1170 center-relative">
                 <ul>
-                    <li class="copyright-footer" data-i18n="footer.copyright">
-                        © 2026 OKAWE Media.Ghana | All rights reserved.
+                    <li class="copyright-footer">
+                        <span data-i18n="footer.copyright">© 2026 OKAWE Media.Ghana | All rights reserved.</span>
                         <span id="admin-entry" class="admin-entry" title="Admin access" style="display: inline-block !important; cursor: pointer; text-decoration: none; margin-left: 8px; padding: 3px 8px; border-radius: 999px; background: #32db89; color: #fff; font-weight: 700; line-height: 1;" data-i18n="footer.admin">•</span>
                     </li>
                     <li class="footer-branches" id="footer-branches"></li>

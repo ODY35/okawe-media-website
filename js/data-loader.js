@@ -6,6 +6,18 @@ let currentData = {};
 let currentLangData = {};
 let currentFile = "";
 
+function updateLanguageButtons(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        const isActive = btn.dataset.lang === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+    });
+}
+
+function setDocumentLanguage(lang) {
+    document.documentElement.lang = lang === 'fr' ? 'fr' : 'en';
+}
+
 // Helper to get nested value from object using dot notation
 function getNestedValue(obj, path) {
     return path.split('.').reduce((acc, part) => acc && acc[part], obj);
@@ -40,19 +52,16 @@ async function loadLanguageData(lang) {
         }
     }
     
-    // Update active button styles
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        if (btn.dataset.lang === lang) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
+    updateLanguageButtons(lang);
+    setDocumentLanguage(lang);
     
     renderContent();
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
+    setDocumentLanguage(currentLanguage);
+    updateLanguageButtons(currentLanguage);
+
     // Load initial language data
     await loadLanguageData(currentLanguage);
 

@@ -39,16 +39,21 @@
             <nav id="header-main-menu">
                 <div class="mob-menu">MENU</div>
                 <ul class="main-menu sm sm-clean">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#video">Video</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
+                    <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+                    <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="index.html#news" data-i18n="nav.news">News</a></li>
+                    <li><a href="index.html#video" data-i18n="nav.video">Video</a></li>
+                    <li><a href="index.html#skills" data-i18n="nav.skills">Skills</a></li>
+                    <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
                 </ul>
             </nav>
+            <div class="language-switcher" aria-label="Language switcher">
+                <button class="lang-btn active" data-lang="en" type="button">EN</button>
+                <span class="lang-divider">|</span>
+                <button class="lang-btn" data-lang="fr" type="button">FR</button>
+            </div>
         </div>
 
 
@@ -109,7 +114,8 @@
                 <div class="footer content-1170 center-relative">
                     <ul>
                         <li class="copyright-footer">
-                            © 2018 All rights reserved. | Boxus Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <span data-i18n="footer.copyright">© 2026 OKAWE Media.Ghana | All rights reserved.</span>
+                            <span id="admin-entry" class="admin-entry" title="Admin access" style="display: inline-block !important; cursor: pointer; text-decoration: none; margin-left: 8px; padding: 3px 8px; border-radius: 999px; background: #32db89; color: #fff; font-weight: 700; line-height: 1;" data-i18n="footer.admin">•</span>
                         </li>
                         <li class="social-footer">
                             <a href="#"><span class="fa fa-twitter"></span></a>
@@ -128,6 +134,7 @@
 
         <!--Load JavaScript-->
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/data-loader.js"></script>
         <script type='text/javascript' src='js/jquery.sticky-kit.min.js'></script>
         <script type='text/javascript' src='js/jquery.smartmenus.min.js'></script>
         <script type='text/javascript' src='js/jquery.sticky.js'></script>
