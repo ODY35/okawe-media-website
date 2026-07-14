@@ -840,7 +840,9 @@ div.pp_default .pp_loaderIcon
 .testimonial-text
 {
     font-size: 22px;
-    line-height: 40px;    
+    line-height: 40px;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .testimonial-author
