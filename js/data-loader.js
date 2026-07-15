@@ -5,7 +5,7 @@ let currentLanguage = localStorage.getItem('okawe-language') || 'en'; // Default
 let currentData = {};
 let currentLangData = {};
 let currentFile = "home";
-let pendingAsset = null;
+let pendingAsset = null; // { file: File, name, type, previewUrl, dataUrl }
 
 function getStorageKey(lang, file) {
     return `okawe-admin-${lang}-${file}`;
@@ -210,6 +210,35 @@ function applyUploadedAssetToJson(payload, asset) {
     }
 
     return payload;
+}
+
+async function sendSaveToServer(section, payload) {
+    try {
+        const form = new FormData();
+        form.append('password', ADMIN_PASSWORD);
+        form.append('lang', currentLanguage);
+        form.append('section', section);
+        form.append('payload', JSON.stringify(payload));
+
+        const resp = await fetch('php/save_content.php', {
+            method: 'POST',
+            body: form
+        });
+
+        let bodyText = await resp.text();
+        try {
+            const json = JSON.parse(bodyText);
+            if (resp.ok && json && json.ok) return { ok: true };
+            return { ok: false, error: json && json.error ? json.error : bodyText };
+        } catch (e) {
+            // Not JSON
+            if (resp.ok) return { ok: true };
+            return { ok: false, error: bodyText };
+        }
+    } catch (e) {
+        console.error('Error sending save to server', e);
+        return { ok: false, error: e.message };
+    }
 }
 
 function renderContent() {
@@ -564,11 +593,33 @@ function openAdminPanel() {
                 label.textContent = file.name;
                 previewDiv.appendChild(label);
                 uploadPreview.appendChild(previewDiv);
-                pendingAsset = { name: file.name, type: file.type, dataUrl: fileUrl };
+                pendingAsset = { file: file, name: file.name, type: file.type, previewUrl: fileUrl };
             };
             reader.readAsDataURL(file);
         });
     }
+
+async function uploadMediaToServer(file) {
+    try {
+        const form = new FormData();
+        form.append('password', ADMIN_PASSWORD);
+        form.append('file', file);
+
+        const resp = await fetch('php/upload_media.php', {
+            method: 'POST',
+            body: form
+        });
+        const data = await resp.json();
+        if (resp.ok && data.ok && data.url) {
+            return data.url;
+        }
+        console.error('Upload failed', data);
+        return null;
+    } catch (e) {
+        console.error('Error uploading media', e);
+        return null;
+    }
+}
 
     dropZone.addEventListener('click', () => fileInput.click());
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -619,17 +670,41 @@ function openAdminPanel() {
             payload.whatsapp = newValues.whatsapp;
         }
 
-        if (pendingAsset) {
-            applyUploadedAssetToJson(payload, pendingAsset);
-        }
-
-        currentData[section] = payload;
-        localStorage.setItem(getStorageKey(currentLanguage, section), JSON.stringify(payload));
-        renderContent();
-
         const status = document.getElementById('save-status');
         status.style.display = 'inline';
-        setTimeout(() => { status.style.display = 'none'; }, 2500);
+        status.textContent = 'Saving...';
+
+        (async () => {
+            // If there's a pending file, upload it first and use returned URL
+            if (pendingAsset && pendingAsset.file) {
+                const uploadedUrl = await uploadMediaToServer(pendingAsset.file);
+                if (uploadedUrl) {
+                    pendingAsset.dataUrl = uploadedUrl;
+                    // apply uploaded URL into payload
+                    applyUploadedAssetToJson(payload, pendingAsset);
+                    // remove file reference so we don't re-upload next time
+                    delete pendingAsset.file;
+                } else {
+                    console.warn('Media upload failed; falling back to data URL if available');
+                    if (pendingAsset.previewUrl) applyUploadedAssetToJson(payload, { name: pendingAsset.name, type: pendingAsset.type, dataUrl: pendingAsset.previewUrl });
+                }
+            } else if (pendingAsset) {
+                // pendingAsset may already contain dataUrl
+                applyUploadedAssetToJson(payload, pendingAsset);
+            }
+
+            currentData[section] = payload;
+            localStorage.setItem(getStorageKey(currentLanguage, section), JSON.stringify(payload));
+            renderContent();
+
+            const result = await sendSaveToServer(section, payload);
+            if (result && result.ok) {
+                status.textContent = 'Saved and applied!';
+            } else {
+                status.textContent = 'Saved locally (server failed: ' + (result && result.error ? result.error : 'unknown') + ')';
+            }
+            setTimeout(() => { status.style.display = 'none'; status.textContent = 'Saved and applied!'; }, 2500);
+        })();
     });
 
     sectionSelect.value = currentFile || 'home';
