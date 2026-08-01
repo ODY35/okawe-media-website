@@ -42,10 +42,11 @@ function SendEmail($message, $subject, $from, $to) {
     // $headers .= 'To: ' . $to . "\r\n";
     $headers .= 'From: ' . $from . "\r\n";
 
-    mail($to, $subject, $message, $headers);
-    if (mail) {
+    if (mail($to, $subject, $message, $headers)) {
         $isSent = true;
     }
+>>>>>>>
+
     return $isSent;
 }
 
