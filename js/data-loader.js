@@ -143,6 +143,15 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         });
     }
+
+    // Admin modal close handler
+    const adminClose = document.getElementById('admin-close');
+    if (adminClose) {
+        adminClose.addEventListener('click', function() {
+            const modal = document.getElementById('admin-modal');
+            if (modal) modal.style.display = 'none';
+        });
+    }
 });
 
 function applyUploadedAssetToJson(payload, asset) {
@@ -439,10 +448,17 @@ function renderContent() {
 }
 
 function openAdminPanel() {
+    // Support both index.html (inline modal) and admin.html (separate page modal) structures
     const modal = document.getElementById('admin-modal');
-    const content = document.getElementById('admin-content');
+    const adminWrapper = document.querySelector('.admin-wrapper');
+    const content = document.getElementById('admin-content-inner') || document.getElementById('admin-content');
     const passwordPrompt = document.getElementById('password-prompt');
+
+    // Hide password prompt / admin wrapper (admin.html structure)
     if (passwordPrompt) passwordPrompt.style.display = 'none';
+    if (adminWrapper) adminWrapper.style.display = 'none';
+
+    // Show the modal
     if (modal) modal.style.display = 'block';
 
     const editorHtml = `
@@ -596,27 +612,27 @@ function openAdminPanel() {
         });
     }
 
-async function uploadMediaToServer(file) {
-    try {
-        const form = new FormData();
-        form.append('password', ADMIN_PASSWORD);
-        form.append('file', file);
+    async function uploadMediaToServer(file) {
+        try {
+            const form = new FormData();
+            form.append('password', ADMIN_PASSWORD);
+            form.append('file', file);
 
-        const resp = await fetch('php/upload_media.php', {
-            method: 'POST',
-            body: form
-        });
-        const data = await resp.json();
-        if (resp.ok && data.ok && data.url) {
-            return data.url;
+            const resp = await fetch('php/upload_media.php', {
+                method: 'POST',
+                body: form
+            });
+            const data = await resp.json();
+            if (resp.ok && data.ok && data.url) {
+                return data.url;
+            }
+            console.error('Upload failed', data);
+            return null;
+        } catch (e) {
+            console.error('Error uploading media', e);
+            return null;
         }
-        console.error('Upload failed', data);
-        return null;
-    } catch (e) {
-        console.error('Error uploading media', e);
-        return null;
     }
-}
 
     dropZone.addEventListener('click', () => fileInput.click());
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
