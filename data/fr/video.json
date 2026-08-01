@@ -7,6 +7,13 @@
         "Livraison à Temps — Nous respectons vos délais et livrons à temps",
         "Tarifs Abordables — Services de qualité à des tarifs compétitifs"
     ],
-    "videoUrl": "https://vimeo.com/157276599",
-    "thumbnail": "demo-images/video_img.jpg"
+    "videoUrl": "https://www.youtube.com/@okawemedia",
+    "thumbnail": "demo-images/video_img.jpg",
+    "videos": [
+        {
+            "id": "dQw4w9WgXcQ",
+            "title": "OKAWE Media Showreel 2024",
+            "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        }
+    ]
 }

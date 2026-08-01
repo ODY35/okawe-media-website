@@ -120,20 +120,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     });
 
-    // Admin entry click handler
+    // Admin entry click handler — redirect to separate admin page
     const adminEntry = document.getElementById('admin-entry');
     if (adminEntry) {
         adminEntry.addEventListener('click', function() {
-            const modal = document.getElementById('admin-modal');
-            const passwordPrompt = document.getElementById('password-prompt');
-            const adminContent = document.getElementById('admin-content');
-            passwordPrompt.style.display = 'block';
-            adminContent.innerHTML = '';
-            modal.style.display = 'block';
+            window.location.href = 'admin.html';
         });
     }
 
-    // Password submit handler
+    // Admin page password submit handler
     const submitPassword = document.getElementById('submit-password');
     if (submitPassword) {
         submitPassword.addEventListener('click', function() {
@@ -148,22 +143,6 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
         });
     }
-
-    // Admin modal close
-    const adminClose = document.getElementById('admin-close');
-    if (adminClose) {
-        adminClose.addEventListener('click', function() {
-            document.getElementById('admin-modal').style.display = 'none';
-        });
-    }
-
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
-        const modal = document.getElementById('admin-modal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
 });
 
 function applyUploadedAssetToJson(payload, asset) {
@@ -389,6 +368,24 @@ function renderContent() {
                 const thumbImg = videoPopup.querySelector('.thumb');
                 if (thumbImg) thumbImg.src = currentData.video.thumbnail;
             }
+
+            // Render YouTube video gallery
+            const videoGallery = videoSection.querySelector('#video-gallery');
+            if (videoGallery && currentData.video.videos && currentData.video.videos.length > 0) {
+                videoGallery.innerHTML = currentData.video.videos.map(v => `
+                    <div class="video-gallery-item" style="margin-bottom: 20px;">
+                        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+                            <iframe src="${v.embedUrl}" 
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                    allowfullscreen 
+                                    loading="lazy"
+                                    title="${v.title}">
+                            </iframe>
+                        </div>
+                        <p style="color: #FFBA42; margin-top: 8px; font-weight: 600;">${v.title}</p>
+                    </div>
+                `).join('');
+            }
         }
     }
 
@@ -445,8 +442,8 @@ function openAdminPanel() {
     const modal = document.getElementById('admin-modal');
     const content = document.getElementById('admin-content');
     const passwordPrompt = document.getElementById('password-prompt');
-    passwordPrompt.style.display = 'none';
-    modal.style.display = 'block';
+    if (passwordPrompt) passwordPrompt.style.display = 'none';
+    if (modal) modal.style.display = 'block';
 
     const editorHtml = `
         <div style="display: grid; gap: 16px;">

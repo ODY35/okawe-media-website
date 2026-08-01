@@ -1,9 +1,9 @@
 <!DOCTYPE HTML> 
 <html lang="en-US">
     <head>
-        <title>okawemedia - Digital Markting Agency</title>
+        <title>OKAWE Media — Digital Marketing, Branding & Creative Solutions | Accra, Ghana</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="description" content="OKAWE Media Ghana digital marketing agency website" />
+        <meta name="description" content="OKAWE Media is a digital marketing agency in Accra, Ghana. We specialise in video marketing, brand identity, web design, SEO & creative content for businesses in Ghana and Gabon." />
         <meta name="keywords" content="HTML, CSS, JavaScript, PHP" />
         <meta name="author" content="OKAWE Media" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -512,13 +512,20 @@
                         <br>
                     </div>
                     <div class="full-width ">
-                        <a class="video-popup-holder" href="https://vimeo.com/157276599" data-rel="prettyPhoto[gallery-video1]">
+                        <a class="video-popup-holder" href="https://www.youtube.com/@okawemedia" data-rel="prettyPhoto[gallery-video1]">
                             <img class="thumb" src="demo-images/video_img.jpg" alt="">
                             <img class="popup-play" src="images/icon_video.svg" alt="Play">
                         </a>
                     </div>
                 </div>
                 <div class="clear"></div>
+            </div>
+
+            <!-- Video Gallery -->
+            <div class="block content-1170 center-relative">
+                <div id="video-gallery" class="video-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <!-- Videos are dynamically loaded by data-loader.js -->
+                </div>
             </div>
 
             <div class="extra-content-full-width">
@@ -672,6 +679,8 @@
                     <li class="copyright-footer">
                         <span data-i18n="footer.copyright">© 2026 OKAWE Media.Ghana | All rights reserved.</span>
                         <span id="admin-entry" class="admin-entry" title="Admin access" style="display: inline-block !important; width: 8px; height: 8px; margin-left: 6px; border-radius: 50%; background: #32db89; cursor: pointer; vertical-align: middle;" data-i18n="footer.admin"> </span>
+                        <span style="margin-left: 8px; font-size: 12px; opacity: 0.7;">| Est. 2023 | Reg. No. CS-00245</span>
+                        <a href="privacy.html" style="margin-left: 10px; font-size: 12px; opacity: 0.7;">Privacy Policy</a>
                     </li>
                     <li class="footer-branches" id="footer-branches"></li>
                     <li class="social-footer">
@@ -683,23 +692,6 @@
                 </ul>
             </div>
         </footer>
-
-        <!-- Admin Modal -->
-        <div id="admin-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; overflow-y: auto; padding: 20px;">
-            <div style="background: white; max-width: 900px; margin: 20px auto; padding: 30px; border-radius: 8px;">
-                <button id="admin-close" style="float: right; cursor: pointer; background: none; border: none; font-size: 24px;">&times;</button>
-                <h2 style="margin-top: 0;">OKAWE Media Admin</h2>
-                <!-- Password Prompt -->
-                <div id="password-prompt" style="margin-bottom: 20px;">
-                    <label for="admin-password">Enter admin code:</label>
-                    <input type="password" id="admin-password" style="margin-left: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
-                    <button id="submit-password" style="margin-left: 10px; padding: 8px 20px; background: #32db89; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
-                    <p id="password-error" style="color: #e64b77; display: none; margin-top: 10px;">Incorrect code!</p>
-                </div>
-                <div id="admin-content"></div>
-            </div>
-        </div>
-
 
         <!--Load JavaScript-->
         <script type="text/javascript" src="js/jquery.js"></script>
