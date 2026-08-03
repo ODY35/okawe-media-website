@@ -11,9 +11,19 @@
     "thumbnail": "demo-images/video_img.jpg",
     "videos": [
         {
-            "id": "dQw4w9WgXcQ",
+            "id": "yebMowTO9p8",
             "title": "OKAWE Media Showreel 2024",
-            "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            "embedUrl": "https://www.youtube.com/embed/yebMowTO9p8"
+        },
+        {
+            "id": "cnJtEyphKvg",
+            "title": "Restaurant Promo Video Campaign",
+            "embedUrl": "https://www.youtube.com/embed/cnJtEyphKvg"
+        },
+        {
+            "id": "t0r6SqRC0ms",
+            "title": "Brand Identity Motion Graphics",
+            "embedUrl": "https://www.youtube.com/embed/t0r6SqRC0ms"
         }
     ]
 }

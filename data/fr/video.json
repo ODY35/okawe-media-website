@@ -11,9 +11,19 @@
     "thumbnail": "demo-images/video_img.jpg",
     "videos": [
         {
-            "id": "dQw4w9WgXcQ",
-            "title": "OKAWE Media Showreel 2024",
-            "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+            "id": "yebMowTO9p8",
+            "title": "Showreel OKAWE Media 2024",
+            "embedUrl": "https://www.youtube.com/embed/yebMowTO9p8"
+        },
+        {
+            "id": "cnJtEyphKvg",
+            "title": "Campagne Vidéo Promotionnelle pour Restaurant",
+            "embedUrl": "https://www.youtube.com/embed/cnJtEyphKvg"
+        },
+        {
+            "id": "t0r6SqRC0ms",
+            "title": "Motion Graphics Identité de Marque",
+            "embedUrl": "https://www.youtube.com/embed/t0r6SqRC0ms"
         }
     ]
 }
